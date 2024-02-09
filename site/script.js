@@ -6,10 +6,30 @@ var audioFiles = ['C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Wint
 'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Strausss Don Juan Horns Soli First Call.mp3']
 
 let clonedFiles = JSON.parse(JSON.stringify(audioFiles));
+var correct_button = getCorrectButton();
+
 document.addEventListener('DOMContentLoaded', function () {
     var playButton = document.getElementById('playButton');
     playRandom();
     playButton.addEventListener('click', playRandom);
+});
+
+//set up button press
+const buttons = Array.from(document.querySelectorAll('button'));
+    // Loop through the array of buttons and add event listeners
+    buttons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        const buttonId = event.target.id;
+        console.log('Button with id ' + buttonId + ' was clicked');
+        // Add your desired action here
+        if (buttonId == correct_button) {
+            console.log("Correct");
+        }
+        else {
+            console.log("Wrong");
+        }
+        loadButtons(getCorrectButton);
+      });
 });
 
 function getCorrectButton() {
@@ -26,13 +46,18 @@ function loadButtons(correct_button) {
     audioFiles.splice(randomIndex, 1);
 
     //choose correct button
-    
     document.getElementById(correct_button).textContent = formatButtonContent(audioPlayer.src);
 
-   
+    //format other buttons
+    buttons.forEach(button => {
+        if (button.id !== correct_button) {
+            var randomIndex = Math.floor(Math.random() * clonedFiles.length)
+            button.textContent = clonedFiles[randomIndex];
+        }
+})
 }
 
-function playRandom() {
+/*function playRandom() {
     if (audioFiles.length == 0) {
         console.log("out of files");
         return;
@@ -48,7 +73,7 @@ function playRandom() {
     correct_button_number = Math.floor(Math.random() * 3).toString()
     document.getElementById('button'.concat(correct_button_number)).textContent = formatButtonContent(audioPlayer.src);
 
-}
+}*/
 
 function formatButtonContent(audioSrc) {
     correct_button_content = audioSrc.replace('C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/','').replace('.mp3', '').slice(1);
