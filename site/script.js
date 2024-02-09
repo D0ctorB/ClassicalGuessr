@@ -3,7 +3,22 @@ var audioFiles = ['C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Wint
 'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Winter-Wind - Evgeny Kissin.mp3',
 'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Strausss Don Juan Horns Soli First Call.mp3',
 'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Strausss Don Juan Horns Soli First Call.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Strausss Don Juan Horns Soli First Call.mp3']
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Strausss Don Juan Horns Soli First Call.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Chopin - Fantaisie-Impromptu (Op 66).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Chopin - Fantaisie-Impromptu (Op 66).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Chopin - Fantaisie-Impromptu (Op 66).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Bach Cello Suite No 1 in G Major Pr�lude (Official Video).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Bach Cello Suite No 1 in G Major Pr�lude (Official Video).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Bach Cello Suite No 1 in G Major Pr�lude (Official Video).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Liszt - La Campanella (100000 special).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Liszt - La Campanella (100000 special).mp3',
+'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Liszt - La Campanella (100000 special).mp3'];
 
 let clonedFiles = JSON.parse(JSON.stringify(audioFiles));
 var correct_button = getCorrectButton();
@@ -50,12 +65,18 @@ function loadButtons(correct_button) {
     document.getElementById(correct_button).textContent = formatButtonContent(audioPlayer.src);
 
     //format other buttons
+    var used = [document.getElementById(correct_button).textContent];
     buttons.forEach(button => {
         if (button.id !== correct_button) {
             console.log(button.id);
-            var randomIndex = Math.floor(Math.random() * clonedFiles.length)
-            button.textContent = formatButtonContent(clonedFiles[randomIndex]);
-            console.log("changed");
+            var randomIndex = Math.floor(Math.random() * clonedFiles.length);
+
+            var chosenFiller = formatButtonContent(clonedFiles[randomIndex]);
+            while (used.includes(chosenFiller)){
+                var randomIndex = Math.floor(Math.random() * clonedFiles.length);
+            }
+            button.textContent = chosenFiller;
+            used.push(chosenFiller);
         }
 })
 }

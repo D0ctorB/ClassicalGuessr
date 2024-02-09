@@ -8,7 +8,7 @@ p = Playlist('https://www.youtube.com/playlist?list=PLRyfoOrTGlqQREjWQaL-mLP_GcB
 
 for url in p.video_urls:
     yt = YouTube(url)
-    TITLES.append(yt.title.replace("'","").replace(",", ""))
+    TITLES.append(yt.title.replace("'","").replace(",", "").replace(".", "").replace("|", "").replace(":", ""))
     audio_stream = yt.streams.filter(only_audio=True).get_by_itag(251)
     audio_stream.download(output_path= "audios")
 
