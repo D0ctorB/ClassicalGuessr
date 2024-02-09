@@ -74,6 +74,7 @@ function loadButtons(correct_button) {
             var chosenFiller = formatButtonContent(clonedFiles[randomIndex]);
             while (used.includes(chosenFiller)){
                 var randomIndex = Math.floor(Math.random() * clonedFiles.length);
+                var chosenFiller = formatButtonContent(clonedFiles[randomIndex]);
             }
             button.textContent = chosenFiller;
             used.push(chosenFiller);
