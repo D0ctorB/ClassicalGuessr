@@ -9,28 +9,29 @@ let clonedFiles = JSON.parse(JSON.stringify(audioFiles));
 var correct_button = getCorrectButton();
 
 document.addEventListener('DOMContentLoaded', function () {
-    var playButton = document.getElementById('playButton');
-    playRandom();
-    playButton.addEventListener('click', playRandom);
-});
+    loadButtons(correct_button);
 
-//set up button press
-const buttons = Array.from(document.querySelectorAll('button'));
+    //set up button press
+    const buttons = Array.from(document.querySelectorAll('button'));
+
     // Loop through the array of buttons and add event listeners
     buttons.forEach(button => {
-      button.addEventListener('click', function(event) {
-        const buttonId = event.target.id;
-        console.log('Button with id ' + buttonId + ' was clicked');
-        // Add your desired action here
-        if (buttonId == correct_button) {
-            console.log("Correct");
-        }
-        else {
-            console.log("Wrong");
-        }
-        loadButtons(getCorrectButton);
-      });
+        button.addEventListener('click', function(event) {
+            const buttonId = event.target.id;
+            console.log('Button with id ' + buttonId + ' was clicked');
+            // Add your desired action here
+            if (buttonId === correct_button) {
+                console.log("Correct");
+             }
+            else {
+                console.log("Wrong");
+            }
+                loadButtons(getCorrectButton());
+  });
 });
+
+});
+
 
 function getCorrectButton() {
     correct_button_number = Math.floor(Math.random() * 3).toString();
@@ -38,7 +39,7 @@ function getCorrectButton() {
     return correct_button
 }
 function loadButtons(correct_button) {
-    var buttons = document.querySelectorAll('button');
+    var buttons = Array.from(document.querySelectorAll('button'));
     //set audio source to random file
     var audioPlayer = document.getElementById('audioPlayer');
     var randomIndex = Math.floor(Math.random() * audioFiles.length);
@@ -51,29 +52,13 @@ function loadButtons(correct_button) {
     //format other buttons
     buttons.forEach(button => {
         if (button.id !== correct_button) {
+            console.log(button.id);
             var randomIndex = Math.floor(Math.random() * clonedFiles.length)
-            button.textContent = clonedFiles[randomIndex];
+            button.textContent = formatButtonContent(clonedFiles[randomIndex]);
+            console.log("changed");
         }
 })
 }
-
-/*function playRandom() {
-    if (audioFiles.length == 0) {
-        console.log("out of files");
-        return;
-    }
-  
-    //set audio source to random file
-    var audioPlayer = document.getElementById('audioPlayer');
-    var randomIndex = Math.floor(Math.random() * audioFiles.length);
-    audioPlayer.src = audioFiles[randomIndex];
-    audioFiles.splice(randomIndex, 1);
-
-    //choose correct button
-    correct_button_number = Math.floor(Math.random() * 3).toString()
-    document.getElementById('button'.concat(correct_button_number)).textContent = formatButtonContent(audioPlayer.src);
-
-}*/
 
 function formatButtonContent(audioSrc) {
     correct_button_content = audioSrc.replace('C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/','').replace('.mp3', '').slice(1);
