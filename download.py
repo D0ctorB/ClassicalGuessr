@@ -13,8 +13,8 @@ for url in p.video_urls:
     audio_stream.download(output_path= "audios")
 
 for title in TITLES:
-    f = open("trimmedPaths.txt", "a")
+    f = open("trimmedPaths.txt", "a", encoding='utf-8')
     for i in range(trimsPerAudio):
         f.write("'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/" + str(i) + title + ".mp3',\n")
-    f.close()
+        f.close()
 
