@@ -20,6 +20,7 @@ var audioFiles = ['C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Wint
 'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Liszt - La Campanella (100000 special).mp3',
 'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Liszt - La Campanella (100000 special).mp3'];
 
+var roundNumber = 0;
 let clonedFiles = JSON.parse(JSON.stringify(audioFiles));
 var correct_button = getCorrectButton();
 
@@ -37,11 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add your desired action here
             if (buttonId === correct_button) {
                 console.log("Correct");
+                alert("Correct!");
              }
             else {
                 console.log("Wrong");
+                alert("Wrong!");
             }
-                loadButtons(getCorrectButton());
+            roundNumber += 1;
+            loadButtons(getCorrectButton());
   });
 });
 
@@ -54,6 +58,9 @@ function getCorrectButton() {
     return correct_button
 }
 function loadButtons(correct_button) {
+    if (roundNumber == 5) {
+        window.location.href = "C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/site/EndGame.html";
+    }
     var buttons = Array.from(document.querySelectorAll('button'));
     //set audio source to random file
     var audioPlayer = document.getElementById('audioPlayer');
