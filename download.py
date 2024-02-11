@@ -5,11 +5,11 @@ trimsPerAudio = 3
 global TITLES
 TITLES = []
 sitePrefix = "http://localhost:8000/trimmed/"
-p = Playlist('https://www.youtube.com/playlist?list=PLRyfoOrTGlqQREjWQaL-mLP_GcBbfFVYX')
+p = Playlist('https://www.youtube.com/playlist?list=PLRyfoOrTGlqTkk1vOFw9bTqNOdCvlMKD1')
 
 for url in p.video_urls:
     yt = YouTube(url)
-    TITLES.append(yt.title.replace("'","").replace(",", "").replace(".", "").replace("|", "").replace(":", ""))
+    TITLES.append(yt.title.replace("'","").replace(",", "").replace(".", "").replace("|", "").replace(":", "").replace("/", "").replace('"', ""))
     audio_stream = yt.streams.filter(only_audio=True).get_by_itag(251)
     audio_stream.download(output_path= "audios")
 
