@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loadButtons(correct_button);
 
     //set up button press
-    const buttons = Array.from(document.querySelectorAll('button'));
+    const buttons = Array.from(document.querySelectorAll('.button'));
 
     // Loop through the array of buttons and add event listeners
     buttons.forEach(button => {
@@ -70,7 +70,7 @@ function loadButtons(correct_button) {
         loadSeparateHTMLFile();
         return;
     }
-    var buttons = Array.from(document.querySelectorAll('button'));
+    var buttons = Array.from(document.querySelectorAll('.button'));
     //set audio source to random file
     var audioPlayer = document.getElementById('audioPlayer');
     var randomIndex = Math.floor(Math.random() * audioFiles.length);
