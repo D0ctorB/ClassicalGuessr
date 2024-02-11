@@ -22,6 +22,7 @@ var audioFiles = ['http://localhost:8000/trimmed/0Winter-Wind - Evgeny Kissin.mp
 
 sitePrefix = 'http://localhost:8000/trimmed/';
 
+rounds = 5;
 window.roundNumber = 0;
 window.score = 0;
 let clonedFiles = JSON.parse(JSON.stringify(audioFiles));
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("Wrong");
                 alert("Wrong!");
             }
-            roundNumber += 1;
+            window.roundNumber += 1;
             loadButtons(getCorrectButton());
   });
 });
@@ -62,8 +63,12 @@ function getCorrectButton() {
     return correct_button
 }
 function loadButtons(correct_button) {
-    if (roundNumber == 5) {
+    if (roundNumber == rounds) {
+        localStorage.setItem('score', window.score);
+        localStorage.setItem('round', window.roundNumber);
+        console.log(window.roundNumber);
         loadSeparateHTMLFile();
+        return;
     }
     var buttons = Array.from(document.querySelectorAll('button'));
     //set audio source to random file
@@ -102,13 +107,6 @@ function formatButtonContent(audioSrc) {
 }
 
 function loadSeparateHTMLFile() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'EndGame.html', true);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        // Inject the HTML content into the current document
-        document.body.innerHTML += xhr.responseText;
-      }
-    };
-    xhr.send();
+    window.location.href = 'EndGame.html';
   }
+
