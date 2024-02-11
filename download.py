@@ -4,6 +4,7 @@ from pytube import Playlist
 trimsPerAudio = 3
 global TITLES
 TITLES = []
+sitePrefix = "http://localhost:8000/trimmed/"
 p = Playlist('https://www.youtube.com/playlist?list=PLRyfoOrTGlqQREjWQaL-mLP_GcBbfFVYX')
 
 for url in p.video_urls:
@@ -15,6 +16,6 @@ for url in p.video_urls:
 for title in TITLES:
     f = open("trimmedPaths.txt", "a", encoding='utf-8')
     for i in range(trimsPerAudio):
-        f.write("'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/" + str(i) + title + ".mp3',\n")
+        f.write(sitePrefix + str(i) + title + ".mp3',\n")
         f.close()
 
