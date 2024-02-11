@@ -16,6 +16,7 @@ for url in p.video_urls:
 for title in TITLES:
     f = open("trimmedPaths.txt", "a", encoding='utf-8')
     for i in range(trimsPerAudio):
-        f.write(sitePrefix + str(i) + title + ".mp3',\n")
-        f.close()
+        f.write("'" + sitePrefix + str(i) + title + ".mp3',\n")
+        
+    f.close()
 

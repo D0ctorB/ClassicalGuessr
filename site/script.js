@@ -1,24 +1,26 @@
-var audioFiles = ['C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Winter-Wind - Evgeny Kissin.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Winter-Wind - Evgeny Kissin.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Winter-Wind - Evgeny Kissin.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Strausss Don Juan Horns Soli First Call.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Strausss Don Juan Horns Soli First Call.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Strausss Don Juan Horns Soli First Call.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Chopin - Fantaisie-Impromptu (Op 66).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Chopin - Fantaisie-Impromptu (Op 66).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Chopin - Fantaisie-Impromptu (Op 66).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Bach Cello Suite No 1 in G Major Prélude (Official Video).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Bach Cello Suite No 1 in G Major Prélude (Official Video).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Bach Cello Suite No 1 in G Major Prélude (Official Video).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/0Liszt - La Campanella (100000 special).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/1Liszt - La Campanella (100000 special).mp3',
-'C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/2Liszt - La Campanella (100000 special).mp3'];
+var audioFiles = ['http://localhost:8000/trimmed/0Winter-Wind - Evgeny Kissin.mp3',
+'http://localhost:8000/trimmed/1Winter-Wind - Evgeny Kissin.mp3',
+'http://localhost:8000/trimmed/2Winter-Wind - Evgeny Kissin.mp3',
+'http://localhost:8000/trimmed/0Strausss Don Juan Horns Soli First Call.mp3',
+'http://localhost:8000/trimmed/1Strausss Don Juan Horns Soli First Call.mp3',
+'http://localhost:8000/trimmed/2Strausss Don Juan Horns Soli First Call.mp3',
+'http://localhost:8000/trimmed/0Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
+'http://localhost:8000/trimmed/1Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
+'http://localhost:8000/trimmed/2Vivaldi Winter (Four Seasons RV 397) 3 Allegro.mp3',
+'http://localhost:8000/trimmed/0Chopin - Fantaisie-Impromptu (Op 66).mp3',
+'http://localhost:8000/trimmed/1Chopin - Fantaisie-Impromptu (Op 66).mp3',
+'http://localhost:8000/trimmed/2Chopin - Fantaisie-Impromptu (Op 66).mp3',
+'http://localhost:8000/trimmed/0Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
+'http://localhost:8000/trimmed/1Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
+'http://localhost:8000/trimmed/2Mozart ALLA TURCA from Sonata No 11 in A major K331  Tzvi Erez.mp3',
+'http://localhost:8000/trimmed/0Bach Cello Suite No 1 in G Major Prélude (Official Video).mp3',
+'http://localhost:8000/trimmed/1Bach Cello Suite No 1 in G Major Prélude (Official Video).mp3',
+'http://localhost:8000/trimmed/2Bach Cello Suite No 1 in G Major Prélude (Official Video).mp3',
+'http://localhost:8000/trimmed/0Liszt - La Campanella (100000 special).mp3',
+'http://localhost:8000/trimmed/1Liszt - La Campanella (100000 special).mp3',
+'http://localhost:8000/trimmed/2Liszt - La Campanella (100000 special).mp3'];
+
+sitePrefix = 'http://localhost:8000/trimmed/';
 
 window.roundNumber = 0;
 window.score = 0;
@@ -92,7 +94,7 @@ function loadButtons(correct_button) {
 }
 
 function formatButtonContent(audioSrc) {
-    correct_button_content = audioSrc.replace('C:/Users/nm556/OneDrive/Desktop/ClassicalGuessr/trimmed/','').replace('.mp3', '').slice(1);
+    correct_button_content = audioSrc.replace(sitePrefix,'').replace('.mp3', '').slice(1);
     correct_button_content = correct_button_content.replace('ile:///', '').replace(/[0-9]/g, '');
     correct_button_content = correct_button_content.split('%').join(' ');
 
