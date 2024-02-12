@@ -238,6 +238,8 @@ function formatButtonContent(audioSrc) {
 }
 
 function loadSeparateHTMLFile() {
-    window.location.href = 'EndGame.html';
+    setTimeout(function() {
+        window.location.href = 'EndGame.html';
+    }, 1000)
   }
 

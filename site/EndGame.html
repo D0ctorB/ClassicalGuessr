@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassicalGuessr</title>
+    <link rel="stylesheet" href="EndgameStyles.css"> <!-- Link to external CSS file -->
 </head>
 <body>
-    <p id="output"></p>
+    <div class="container">
+        <h1 class="heading">Game Over!</h1>
+        <div class="score-container">
+            <p id="output"></p>
+        </div>
+        <p class="message">Thank you for playing ClassicalGuessr!</p>
+    </div>
     <script>
         // Access the global variable and display it
-        document.getElementById("output").textContent = "Score: " + localStorage.getItem('score') + "/" + localStorage.getItem('round');
+        document.getElementById("output").textContent = "Your Final Score: " + localStorage.getItem('score') + "/" + localStorage.getItem('round');
     </script>
 </body>
 </html>
