@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //set up button press
     const buttons = Array.from(document.querySelectorAll('button'));
+    const feedbackText = document.getElementById('feedbackText');
 
     // Loop through the array of buttons and add event listeners
     buttons.forEach(button => {
@@ -164,13 +165,11 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Button with id ' + buttonId + ' was clicked');
             // Add your desired action here
             if (buttonId === correct_button) {
-                console.log("Correct");
-                alert("Correct!");
+                feedbackText.textContent = "Correct!";
                 window.score += 1;
              }
             else {
-                console.log("Wrong");
-                alert("Wrong!");
+                feedbackText.textContent = "Wrong!";
             }
             window.roundNumber += 1;
             loadButtons(getCorrectButton());
