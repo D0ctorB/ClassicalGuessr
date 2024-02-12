@@ -166,11 +166,20 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add your desired action here
             if (buttonId === correct_button) {
                 feedbackText.textContent = "Correct!";
+                feedbackText.classList.remove('wrong');
+                feedbackText.classList.add('correct');
                 window.score += 1;
              }
             else {
                 feedbackText.textContent = "Wrong!";
+                feedbackText.classList.remove('correct');
+                feedbackText.classList.add('wrong');
             }
+            //Wait, then make text disappear
+            setTimeout(() => {
+                feedbackText.textContent = "";
+                feedbackText.classList.remove('correct', 'wrong');
+            }, 1000);
             window.roundNumber += 1;
             loadButtons(getCorrectButton());
   });
