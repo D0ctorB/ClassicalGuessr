@@ -2,6 +2,11 @@ from pydub import AudioSegment
 import random
 import download
 
+filePrefix = 'http://localhost:8000/trimmed/'
+trimmedPaths = open('trimmedPaths.txt', 'r')
+def formatLine(line):
+    return line.replace(filePrefix, '').strip()
+
 for i in range(len(download.TITLES)):
     #create mp3 from each audio webm
     audiopath = "audios/" + download.TITLES[i] + '.webm'
@@ -12,5 +17,6 @@ for i in range(len(download.TITLES)):
     for j in range(3):
         start = random.randint(0, millis - length)
         trimmed = audio[start:start + length]
-        trimmed.export('trimmed/' + str(j) + download.TITLES[i] + '.mp3')
+        line = trimmedPaths.readline()
+        trimmed.export('trimmed/' + formatLine(line))
 
