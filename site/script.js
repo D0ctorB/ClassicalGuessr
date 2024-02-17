@@ -158,11 +158,9 @@ function loadButtons(correct_button) {
 }
 
 function formatButtonContent(audioSrc) {
-    console.log(audioSrc);
+    
     correct_button_content = audioSrc.replace(sitePrefix,'').replace('.mp3', '').slice(1);
     correct_button_content = correct_button_content.replace(/%20/g, ' ');
-    //correct_button_content = correct_button_content.split('%').join(' ');
-
     return correct_button_content;
 }
 
@@ -171,4 +169,3 @@ function loadSeparateHTMLFile() {
         window.location.href = 'EndGame.html';
     }, 1000)
   }
-
