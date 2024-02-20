@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     buttons.forEach(button => {
         button.addEventListener('click', function(event) {
             const buttonId = event.target.id;
+            
             console.log('Button with id ' + buttonId + ' was clicked');
             // Add your desired action here
             if (buttonId === correct_button) {
@@ -102,11 +103,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 feedbackText.textContent = "Wrong!";
                 feedbackText.classList.remove('correct');
                 feedbackText.classList.add('wrong');
+                
             }
-            //Wait, then make text disappear
+            //document.getElementById(correct_button).classList.add('correct-button');
+            //Wait, then make text disappear (and button revert)
             setTimeout(() => {
                 feedbackText.textContent = "";
                 feedbackText.classList.remove('correct', 'wrong');
+                //document.getElementById(correct_button).classList.remove('correct-button');
             }, 1000);
             window.roundNumber += 1;
             loadButtons(getCorrectButton());
